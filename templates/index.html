@@ -1,0 +1,103 @@
+<!doctype html>
+<html>
+  <head>
+    <title>Root Finder</title>
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='style.css') }}"
+    />
+  </head>
+  <body>
+    <button class="dark-toggle" onclick="toggleDarkMode()">🌙</button>
+
+    <div class="container">
+      <h2>🔢 Root Finding Calculator</h2>
+      <p class="subtitle">Solve nonlinear equations using numerical methods</p>
+
+      <form method="POST" id="form">
+        <input
+          type="text"
+          name="function"
+          placeholder="Enter function (e.g. x**3 - x - 2)"
+          required
+        />
+
+        <select name="method">
+          <option>Bisection</option>
+          <option>Secant</option>
+          <option>Newton</option>
+          <option>Regula Falsi</option>
+        </select>
+
+        <input type="text" name="a" placeholder="a / x0" />
+        <input type="text" name="b" placeholder="b / x1" />
+
+        <div class="buttons">
+          <button class="solve-btn" type="submit" name="action" value="solve">
+            🔍 Solve
+          </button>
+          <button
+            class="compare-btn"
+            type="submit"
+            name="action"
+            value="compare"
+          >
+            📊 Compare
+          </button>
+        </div>
+
+        <div id="loader">⏳ Processing...</div>
+      </form>
+
+      {% if result %}
+      <div class="result">
+        Root: {{ "%.6f"|format(result) if result is number else result }}
+      </div>
+      {% endif %} {% if plot_html %}
+      <div class="graph">{{ plot_html|safe }}</div>
+      {% endif %} {% if steps %}
+      <h3>📋 Iteration Steps</h3>
+      <table>
+        <tr>
+          <th>Iteration</th>
+          <th>x</th>
+          <th>f(x)</th>
+        </tr>
+        {% for step in steps %}
+        <tr>
+          <td>{{ step[0] }}</td>
+          <td>{{ "%.6f"|format(step[1]) }}</td>
+          <td>{{ "%.6f"|format(step[2]) }}</td>
+        </tr>
+        {% endfor %}
+      </table>
+      {% endif %} {% if comparison %}
+      <h3>📊 Method Comparison</h3>
+      <table>
+        <tr>
+          <th>Method</th>
+          <th>Root</th>
+          <th>Iterations</th>
+        </tr>
+        {% for row in comparison %}
+        <tr>
+          <td>{{ row[0] }}</td>
+          <td>{{ "%.6f"|format(row[1]) }}</td>
+          <td>{{ row[2] }}</td>
+        </tr>
+        {% endfor %}
+      </table>
+      {% endif %}
+    </div>
+
+    <script>
+      function toggleDarkMode() {
+        document.body.classList.toggle("dark-mode");
+      }
+
+      document.getElementById("form").addEventListener("submit", function () {
+        document.getElementById("loader").style.display = "block";
+      });
+    </script>
+  </body>
+</html>
