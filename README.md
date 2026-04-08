@@ -53,13 +53,16 @@ A modern web-based numerical analysis tool to solve nonlinear equations using mu
 ## 📷 Screenshots
 
 ### 🔹 Main Interface
-(Add screenshot here)
+<img width="1915" height="916" alt="image" src="https://github.com/user-attachments/assets/055e07ee-6c0d-465a-84cd-147f9946342a" />
+
 
 ### 🔹 Graph Visualization
-(Add screenshot here)
+<img width="1165" height="585" alt="image" src="https://github.com/user-attachments/assets/ca99c06d-6d62-48b4-8195-59e2d8aed5b6" />
+
 
 ### 🔹 Method Comparison
-(Add screenshot here)
+<img width="1188" height="432" alt="image" src="https://github.com/user-attachments/assets/c70ed7ae-775a-49ca-840a-6f4cdff26674" />
+
 
 ---
 
