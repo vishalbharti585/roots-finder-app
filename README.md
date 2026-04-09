@@ -5,7 +5,7 @@ A modern web-based numerical analysis tool to solve nonlinear equations using mu
 ---
 
 ## 🚀 Live Demo
-👉 (Add your deployed link here after Render deployment)
+👉 https://roots-finder-app.onrender.com/
 
 ---
 
